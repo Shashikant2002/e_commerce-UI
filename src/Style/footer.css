@@ -1,0 +1,17 @@
+.footer{
+    background: var(--gradient_2);
+    clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 100%);
+}
+.footer .logo img{
+    width: 100%;
+}
+.footer .logo{
+    width: 200px;
+}
+.minFoot{
+    width: 100%;
+    float: left;
+    background: var(--gradient_2);
+    color: var(--white);
+    padding: 10px 0;
+}

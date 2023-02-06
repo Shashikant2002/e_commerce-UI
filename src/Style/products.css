@@ -1,0 +1,33 @@
+.products .filter{
+    width: 25%;
+}
+.products .filter .fil{
+    border: 1px solid var(--lightBlue);
+    margin-top: 10px;
+    padding: 20px;
+    text-align: left;
+}
+
+
+.products .filter .categoryFilter{
+    text-align: left;
+}
+.products .filter .categoryFilter h4{
+    margin-bottom: 10px;
+}
+.products .filter ul li{
+    margin-top: 5px;
+    cursor: pointer;
+}
+.products .filter .priceFilter input{
+    width: 115px;
+    margin-right: 5px;
+    padding: 10px 10px;
+    font-size: 16px;
+    border: 1px solid var(--lightBlue);
+    outline: none;
+}
+.products .filter .priceFilter button{
+    padding: 10px 15px;
+    margin-top: 10px;
+}

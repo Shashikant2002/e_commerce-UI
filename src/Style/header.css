@@ -1,0 +1,165 @@
+.header {
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 999999999;
+    background: transparent;
+    transition: .5s;
+}
+
+.header .logo {
+    width: 120px;
+}
+
+.header .logo img {
+    width: 100%;
+}
+
+.header .menu {
+    width: 50px;
+    cursor: pointer;
+}
+
+.header .hambar span:first-child {
+    margin-top: 0;
+}
+
+.header .hambar span {
+    width: 100%;
+    height: 2px;
+    background: var(--white);
+    margin-top: 12px;
+    display: block;
+}
+
+.onscrollHeader {
+    background: var(--white);
+}
+
+.onscrollHeader .hambar span {
+    background: var(--lightBlue);
+}
+
+/* main menu Start Here  */
+.mainMenu {
+    background: var(--white);
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transition: .5s;
+}
+
+.mainMenuActive {
+    top: 0;
+}
+
+.close {
+    position: absolute;
+    right: 5px;
+    top: 3%;
+    font-size: 2rem;
+    color: var(--lightBlue);
+    cursor: pointer;
+}
+
+.mainMenu .container {
+    padding: 0 20px;
+    height: 100%;
+    position: relative;
+}
+
+.mainMenu .part img {
+    width: 150px;
+    margin-right: 20px;
+}
+
+.mainMenu .part ul {
+    margin-right: 20px;
+}
+
+.mainMenu .part ul li a {
+    color: var(--lightBlue);
+}
+
+.mainMenu .part ul li a h6 {
+    border-bottom: 1px solid transparent;
+    padding: 2px 0;
+
+}
+
+.mainMenu .part ul li a h6:hover {
+    border-bottom: 1px solid var(--lightBlue);
+}
+
+.mainMenu .part ul li {
+    margin-right: 30px;
+}
+
+.mainMenu .part {
+    width: 50%;
+}
+
+.mainMenu .part .icons h4:hover {
+    border: 1px solid var(--lightBlue);
+}
+
+.mainMenu .part .icons h4 {
+    transition: .2s;
+    margin-left: 7px;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.mainMenu .part .icons svg {
+    color: var(--lightBlue);
+}
+
+
+.search {
+    width: 100%;
+    height: 100vh;
+    background: #00000075;
+    top: -100%;
+    left: 0;
+    z-index: 9999999999999999999999;
+    transition: .5s;
+    position: fixed;
+}
+.searchShow{
+    top: 0;
+}
+.search .container{
+    height: 100%;
+    position: relative;
+}
+
+.search .card {
+    width: 100%;
+    max-width: 500px;
+}
+
+.search .bg {
+    background: var(--white);
+    width: 100%;
+    height: 70%;
+    clip-path: polygon(0 0%, 100% 0, 100% 80%, 0% 100%);
+}
+
+.search form input {
+    width: 70%;
+    font-size: 16px;
+    padding: 15px 20px;
+    border: 1px solid var(--lightBlue);
+    outline: none;
+}
+
+.search form button {
+    width: 30%;
+    border: 1px solid var(--lightBlue);
+    border-right: none;
+}

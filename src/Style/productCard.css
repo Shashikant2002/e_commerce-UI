@@ -1,0 +1,23 @@
+.productCard{
+    width: 250px;
+}
+.productCard .thumb{
+    height: 200px;
+    overflow: hidden;
+}
+.productCard .thumb:hover img{
+    transform: scale(1.2);
+}
+.productCard .thumb img{
+    transition: .5s;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+.productCard .content{
+    margin-top: 15px;
+}
+.productCard .content *{
+    margin-top: 5px;
+    color: initial;
+}

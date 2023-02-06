@@ -1,38 +1,140 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Root Colors  */
+:root {
+  --white: #fff;
+  --lightBlue: #0526a2;
+  --gradient: linear-gradient(to right, rgb(255, 255, 255), #0037ff);
+  --gradient_2: linear-gradient(to right, rgb(14, 0, 142), #3762ff);
+  --darkCol: rgb(0 13 28);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+img {
+  display: flex;
+}
+
+/* Global CSS  */
+.commonSec {
+  padding: 100px 0 50px 0;
+  width: 100%;
+  float: left;
+}
+
+.flex {
+  display: flex;
+}
+
+.block {
+  display: block;
+}
+
+.flexDirCol {
+  flex-direction: column;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.justifySpaceBetween {
+  justify-content: space-between;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+.flexWrap {
+  flex-wrap: wrap;
+}
+
+.textCenter {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.globalBtn {
+  border: none;
+  outline: none;
+  background: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.globalBtnFillBtn {
+  border: none;
+  outline: none;
+  background: var(--gradient_2);
+  border: 1px solid var(--white);
+  color: var(--white);
+  padding: 15px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.comCardGap {
+  gap: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Font Size  */
+p {
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 55px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 15px;
 }

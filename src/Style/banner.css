@@ -1,0 +1,21 @@
+.banner{
+    clip-path: polygon(0 0%, 100% 0, 100% 80%, 0% 100%);
+    background: var(--gradient);
+    padding: 200px 0 150px 0;
+}
+
+.banner h3, .banner h1{
+    color: var(--white);
+}
+.banner h1{
+    margin-top: 20px;
+}
+.banner a{
+    margin: 40px auto 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-items: center;
+    }
+.banner a svg{
+    font-size: 16px;
+}
