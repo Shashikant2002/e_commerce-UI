@@ -126,7 +126,7 @@
     background: #00000075;
     top: -100%;
     left: 0;
-    z-index: 9999999999999999999999;
+    z-index: 999999999999999999999;
     transition: .5s;
     position: fixed;
 }
