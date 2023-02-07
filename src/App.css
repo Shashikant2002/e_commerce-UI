@@ -12,6 +12,7 @@
   --gradient: linear-gradient(to right, rgb(255, 255, 255), #0037ff);
   --gradient_2: linear-gradient(to right, rgb(14, 0, 142), #3762ff);
   --darkCol: rgb(0 13 28);
+  --green: rgb(0, 92, 2);
 }
 
 li {
@@ -32,7 +33,9 @@ a {
 img {
   display: flex;
 }
-
+.coloGreen{
+  color: var(--green);
+}
 /* Global CSS  */
 .commonSec {
   padding: 100px 0 50px 0;
@@ -113,6 +116,8 @@ input[type=number] {
 /* Font Size  */
 p {
   font-size: 14px;
+  font-weight: 500;
+  color: var(--darkCol);
 }
 
 h1 {

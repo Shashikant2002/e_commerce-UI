@@ -3,6 +3,7 @@ import ProductCard from './ProductCard';
 import data from '../../fakejson.json';
 import { Link, useLocation } from 'react-router-dom';
 import "../../Style/products.css"
+import Devider from './Devider';
 
 
 const totalData = data.length;
@@ -13,7 +14,7 @@ const Products = ({ productCount = totalData, title }) => {
     return (
         <>
             <section id='products' className="products commonSec textCenter">
-                <h3 style={{ marginBottom: "20px", borderBottom: "1px solid var(--darkCol)", color: "var(--darkCol)" }} className='textCenter'>{title}</h3>
+            <Devider title={title} />
                 <div className="container flex">
                     {
                         location.pathname == "/products" ?

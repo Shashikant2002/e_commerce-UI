@@ -1,0 +1,40 @@
+.detailPage .image{
+    width: 40%;
+}
+.detailPage .content{
+    width: 60%;
+}
+.detailPage .content *{
+    margin-top: 10px;
+}
+.detailPage .content> button{
+    margin-top: 20px;
+}
+.detailPage .contQuentity .count{
+    padding: 14px 20px;
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
+    width: 70px;
+    outline: none;
+    font-size: 20px;
+}
+.detailPage .contQuentity button{
+    margin-left: 20px;
+}
+.detailPage .contQuentity .globalBtnFillBtn{
+    border: none;
+}
+.detailPage .carousel-status{
+    display: none;
+}
+.detailPage .control-dots{
+    display: none;
+}
+.detailPage .carousel .thumbs-wrapper{
+    margin: 0;
+}
+
+.detailPage .devider{
+    margin: 100px 0 30px 0;
+}

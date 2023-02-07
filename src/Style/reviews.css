@@ -1,0 +1,48 @@
+.review{
+    padding: 20px;
+    border: 1px solid gray;
+    width: 100%;
+    max-width: 350px;
+    background: var(--white);
+    position: relative;
+    cursor: pointer;
+}
+.review img{
+    display: flex;
+    border-radius: 50%;
+    width: 100%;
+    max-width: 100px;
+    margin: 0 auto;
+}
+
+.ReviewPopup{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: #0000001a;
+    z-index: 9999999999999999;
+    display: none;
+}
+.ReviewPopup .close{
+    position: absolute;
+    top: -2px;
+    right: 3px;
+}
+.ReviewPopup .review{
+    width: 100%;
+    max-width: 500px;
+    padding: 40px 30px; 
+    animation: animate .3s linear;
+}
+
+.ReviewPopupShow{
+    display: flex;
+}
+
+@keyframes animate {
+    0%{transform: translateY(20px);}
+    100%{transform: translateY(0px);}
+}
