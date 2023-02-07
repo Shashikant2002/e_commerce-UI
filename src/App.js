@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Banner from './Components/compo/Banner';
+import CartSec from './Components/compo/CartSec';
 import ProductDetailPage from './Components/compo/ProductDetailPage';
 import Products from './Components/compo/Products';
 import Footer from './Components/headFoot/Footer';
@@ -27,6 +28,11 @@ function App() {
           <Route exact path="/detailPage" element={<>
             <Banner mainTitle="Product Detail" />
             <ProductDetailPage />
+          </>} />
+
+          <Route exact path="/cart" element={<>
+            <Banner mainTitle="Your Cart" />
+            <CartSec />
           </>} />
 
         </Routes>

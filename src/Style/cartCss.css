@@ -1,0 +1,67 @@
+.cartSec .shopingNow span svg {
+    font-size: 5rem;
+    color: var(--darkCol);
+    margin-bottom: 10px;
+}
+
+.cartSec .shopingNow h4 {
+    margin-bottom: 20px;
+}
+
+
+.cartSec .cartProduct .table{
+    width: 100%;
+}
+.cartSec .cartProduct .table .head{
+    background: var(--gradient_2);
+    color: var(--white);
+}
+.cartSec .table .head_1{
+    padding: 10px 10px;
+    width: 60%;
+}
+.cartSec .table .head_2{
+    padding: 10px 10px;
+    width: 20%;
+}
+.cartSec .table .head_3{
+    padding: 10px 10px;
+    width: 20%;
+    text-align: right;
+}
+.cartSec .table .head_1 .image img{
+    width: 100%;
+}
+.cartSec .table .head_1 .image{
+    width: 15%;
+}
+.cartSec .table .head_1 .globalBtn{
+    color: var(--darkCol);
+    border: 1px solid var(--darkCol);
+    margin-top: 0px;
+    padding: 4px 10px;
+}
+.cartSec .table .contQuentity .count{
+    padding: 5px 0;
+    width: 50px;
+}
+.cartSec .table .globalBtnFillBtn{
+    padding: 6px 13px;
+}
+
+.cartSec .cartProduct .grossTotal{
+    border-top: 2px solid var(--lightBlue);
+    width: 20%;
+    float: right;
+    padding: 10px 0px;
+}
+.cartSec .cartProduct button{
+    margin-top: 40px;
+    float: right;
+}
+.cartSec .body .pro{
+    border-bottom: 1px solid var(--lightBlue);
+}
+.cartSec .body .pro:last-child{
+    border: none;
+}

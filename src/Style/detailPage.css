@@ -1,40 +1,79 @@
-.detailPage .image{
+.detailPage .image {
     width: 40%;
 }
-.detailPage .content{
+
+.detailPage .content {
     width: 60%;
 }
-.detailPage .content *{
+
+.detailPage .content * {
     margin-top: 10px;
 }
-.detailPage .content> button{
+
+.detailPage .content>button {
     margin-top: 20px;
 }
-.detailPage .contQuentity .count{
-    padding: 14px 20px;
-    background: var(--gradient);
-    color: var(--white);
-    border: none;
-    width: 70px;
-    outline: none;
-    font-size: 20px;
-}
-.detailPage .contQuentity button{
-    margin-left: 20px;
-}
-.detailPage .contQuentity .globalBtnFillBtn{
-    border: none;
-}
-.detailPage .carousel-status{
+
+.detailPage .carousel-status {
     display: none;
 }
-.detailPage .control-dots{
+
+.detailPage .control-dots {
     display: none;
 }
-.detailPage .carousel .thumbs-wrapper{
+
+.detailPage .carousel .thumbs-wrapper {
     margin: 0;
 }
 
-.detailPage .devider{
+.detailPage .devider {
     margin: 100px 0 30px 0;
+}
+
+.submitReview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #0000003b;
+    position: fixed;
+    z-index: 999999999;
+    display: none;
+}
+
+.submitReview .reviewform {
+    width: 100%;
+    max-width: 500px;
+    background: var(--white);
+    padding: 70px 20px 20px;
+    position: relative;
+    animation: animate .3s linear;
+}
+
+.submitReview .reviewform .close{
+    position: absolute;
+    top: -1px;
+    right: 4px;
+}
+
+.submitReview .reviewform textarea {
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    border: 1px solid var(--darkCol);
+    max-width: 100%;
+}
+
+.submitReview .reviewform button {
+    margin-top: 15px;
+}
+
+.showsubmitReview{
+    display: flex;
+}
+
+@keyframes animate {
+    0%{transform: translateY(20px);}
+    100%{transform: translateY(0px);}
 }

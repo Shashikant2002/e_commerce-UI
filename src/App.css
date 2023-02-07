@@ -101,6 +101,25 @@ img {
   gap: 20px;
 }
 
+/* Quentity Controller  */
+.contQuentity .count {
+  padding: 14px 20px;
+  background: var(--gradient);
+  color: var(--white);
+  border: none;
+  width: 70px;
+  outline: none;
+  font-size: 20px;
+}
+
+.contQuentity button {
+  margin-left: 20px;
+}
+
+.contQuentity .globalBtnFillBtn {
+  border: none;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

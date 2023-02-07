@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import '../../Style/detailPage.css'
 import Devider from './Devider';
 import Reviews from './Reviews';
+import { FaWindowClose } from 'react-icons/fa';
 
 const ProductDetailPage = () => {
   const [count, setCount] = useState(1);
@@ -12,6 +13,12 @@ const ProductDetailPage = () => {
       setCount(1);
     }
   }, [count])
+
+
+  const showsubmitReview = () => {
+    document.getElementById('submitReview').classList.toggle('showsubmitReview');
+  }
+
   return (
     <>
       <div className="detailPage commonSec">
@@ -46,7 +53,18 @@ const ProductDetailPage = () => {
               Integrated 6 ports Aura Sync addressable-RGB controller hub and a dedicated front panel control button to create a stunning lighting effect <br />
               Extensive storage options: up to 2 HDD (trays included) and 6x SDD (2x dedicated bracket included, one is on the power supply shroud) mounting locations
               Combat-ready: Customized headphone hook which can be hanged on both sides</p>
-            <button className='globalBtnFillBtn'>Submit Review</button>
+            <button onClick={() => showsubmitReview()} className='globalBtnFillBtn'>Submit Review</button>
+          </div>
+
+          {/* Review Form on Popup  */}
+          <div id='submitReview' className="submitReview flex alignCenter justifyCenter">
+            <div className="reviewform">
+              <span onClick={() => showsubmitReview()} className='close'><FaWindowClose /></span>
+              <form action="/">
+                <textarea name="" id="" rows="15" placeholder='Write Review'></textarea>
+                <button className='globalBtnFillBtn'>Submit Review</button>
+              </form>
+            </div>
           </div>
 
 
@@ -55,13 +73,13 @@ const ProductDetailPage = () => {
           <Devider title="Product Reviews" />
 
           <div className="reviews flex justifyCenter flexWrap comCardGap">
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
+            <Reviews />
+            <Reviews />
+            <Reviews />
+            <Reviews />
+            <Reviews />
+            <Reviews />
+            <Reviews />
           </div>
         </div>
       </div>

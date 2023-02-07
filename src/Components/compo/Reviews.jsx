@@ -7,7 +7,6 @@ const Reviews = () => {
         document.getElementById('showReviewPopup').classList.toggle('ReviewPopupShow')
     }
 
-
     return (
         <>
             <div onClick={() => showPopup()} className="review textCenter">
