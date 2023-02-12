@@ -10,7 +10,6 @@ const totalData = data.length;
 
 const Products = ({ productCount = totalData, title }) => {
     const location = useLocation();
-    console.log(location);
     return (
         <>
             <section id='products' className="products commonSec textCenter">
