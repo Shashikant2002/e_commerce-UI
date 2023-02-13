@@ -26,13 +26,13 @@ const ProductDetailPage = () => {
           <div className="image">
             <Carousel>
               <div>
-                <img src="https://m.media-amazon.com/images/I/81anm+VxFKL._SL1500_.jpg" />
+                <img src="https://m.media-amazon.com/images/I/81anm+VxFKL._SL1500_.jpg" alt='' />
               </div>
               <div>
-                <img src="https://m.media-amazon.com/images/I/81anm+VxFKL._SL1500_.jpg" />
+                <img src="https://m.media-amazon.com/images/I/81anm+VxFKL._SL1500_.jpg" alt='' />
               </div>
               <div>
-                <img src="https://m.media-amazon.com/images/I/81anm+VxFKL._SL1500_.jpg" />
+                <img src="https://m.media-amazon.com/images/I/81anm+VxFKL._SL1500_.jpg" alt='' />
               </div>
             </Carousel>
           </div>

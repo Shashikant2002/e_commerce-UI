@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Banner from "./Components/compo/Banner";
 import CartSec from "./Components/compo/CartSec";
@@ -12,12 +12,14 @@ import Home from "./pages/Home";
 
 function App() {
   useEffect(() => {
-    WebFont.load({
+    WebFont.load({  
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
   }, []);
+
+  
   return (
     <>
       <BrowserRouter>

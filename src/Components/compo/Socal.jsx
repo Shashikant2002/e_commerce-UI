@@ -7,10 +7,10 @@ const Socal = () => {
   return (
     <>
         <ul className="socal flex alignCenter justifyCenter comCardGap">
-                <li><a href="#"><FaFacebookF /></a></li>
-                <li><a href="#"><BsInstagram /></a></li>
-                <li><a href="#"><FaLinkedinIn /></a></li>
-                <li><a href="#"><BsGithub /></a></li>
+                <li><a href="/"><FaFacebookF /></a></li>
+                <li><a href="/"><BsInstagram /></a></li>
+                <li><a href="/"><FaLinkedinIn /></a></li>
+                <li><a href="/"><BsGithub /></a></li>
         </ul>
     </>
   )

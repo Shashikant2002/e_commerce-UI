@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import "../../Style/productCard.css";
 import ReactStars from "react-stars";
 
-const ProductCard = () => {
+const ProductCard = ({data}) => {
+  const {category, description, name, numOfReviews, price, ratings, stock, _id} = data;
   return (
     <>
-      <Link to="/detailPage">
+      <Link to={`/${_id}`}>
         <div className="productCard">
           <div className="thumb">
             <img
@@ -15,17 +16,17 @@ const ProductCard = () => {
             />
           </div>
           <div className="content">
-            <h6>Product Name</h6>
+            <h6>{name}</h6>
             <p className="flex justifyCenter">
               <ReactStars
                 count={5}
                 size={24}
-                color2={"#ffd700"}
+                color2={"#0526a2"}
                 edit={false}
-                value={4.5}
+                value={ratings}
               />
             </p>
-            <h5>₹4000</h5>
+            <h5>₹{price}</h5>
           </div>
         </div>
       </Link>

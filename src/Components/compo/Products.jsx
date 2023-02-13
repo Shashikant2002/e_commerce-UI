@@ -4,19 +4,25 @@ import data from '../../fakejson.json';
 import { Link, useLocation } from 'react-router-dom';
 import "../../Style/products.css"
 import Devider from './Devider';
+import { useSelector } from 'react-redux';
+import ReactStars from 'react-stars';
 
 
 const totalData = data.length;
 
 const Products = ({ productCount = totalData, title }) => {
     const location = useLocation();
+    const { loading, error, products, prodCount } = useSelector(state => state.products)
+    const data = useSelector(state => state.products)
+
+    console.log(data)
     return (
         <>
             <section id='products' className="products commonSec textCenter">
-            <Devider title={title} />
+                <Devider title={title} />
                 <div className="container flex">
                     {
-                        location.pathname == "/products" ?
+                        location.pathname === "/products" ?
                             <div className="filter">
                                 <form action='#' className="priceFilter fil">
                                     <input type="number" placeholder='₹ Min Price' />
@@ -37,11 +43,13 @@ const Products = ({ productCount = totalData, title }) => {
                                 <div action='#' className="categoryFilter fil">
                                     <h4>Above Rating</h4>
                                     <ul>
-                                        <li>⭐⭐⭐⭐⭐</li>
-                                        <li>⭐⭐⭐⭐</li>
-                                        <li>⭐⭐⭐</li>
-                                        <li>⭐⭐</li>
-                                        <li>⭐</li>
+                                        <ReactStars
+                                            count={5}
+                                            size={24}
+                                            color2={"#0526a2"}
+                                            edit={true}
+                                            value={2.5}
+                                        />
                                     </ul>
                                 </div>
                                 <div action='#' className="categoryFilter fil">
@@ -50,11 +58,11 @@ const Products = ({ productCount = totalData, title }) => {
                             </div>
                             : ""
                     }
-                    <div style={location.pathname == "/products" ? { width: "75%" } : {}} className="prod flex justifyCenter comCardGap flexWrap">
+                    <div style={location.pathname === "/products" ? { width: "75%" } : {}} className="prod flex justifyCenter comCardGap flexWrap">
                         {
-                            data && data.map((cur, i) => {
+                            products && products.map((cur, i) => {
                                 return (
-                                    <ProductCard key={i} />
+                                    <ProductCard data={cur} key={i} />
                                 )
                             }).slice(0, productCount)
                         }
