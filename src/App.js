@@ -8,6 +8,7 @@ import Footer from "./Components/headFoot/Footer";
 import Header from "./Components/headFoot/Header";
 import WebFont from "webfontloader";
 import { useEffect } from "react";
+import Home from "./pages/Home";
 
 function App() {
   useEffect(() => {
@@ -27,11 +28,7 @@ function App() {
             path="/"
             element={
               <>
-                <Banner
-                  title="Welcome to Our E-Commerce Website"
-                  mainTitle="Find Your Product"
-                />
-                <Products title="Products" productCount={8} />
+                <Home />
               </>
             }
           />
