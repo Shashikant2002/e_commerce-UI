@@ -7,7 +7,7 @@ const ProductCard = ({data}) => {
   const {category, description, name, numOfReviews, price, ratings, stock, _id} = data;
   return (
     <>
-      <Link to={`/${_id}`}>
+      <Link to={`/product/${_id}`}>
         <div className="productCard">
           <div className="thumb">
             <img

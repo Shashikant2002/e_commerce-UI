@@ -9,20 +9,33 @@ import Header from "./Components/headFoot/Header";
 import WebFont from "webfontloader";
 import { useEffect } from "react";
 import Home from "./pages/Home";
+// For Alert
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from "react-redux";
 
 function App() {
   useEffect(() => {
-    WebFont.load({  
+    WebFont.load({
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
   }, []);
 
-  
+
+  const { error } = useSelector((state) => state.products);
+  useEffect(() => {
+    toast(error);
+  }, [error]);
+
+
   return (
     <>
       <BrowserRouter>
+        <ToastContainer
+          position="bottom-right"
+        />
         <Header />
         <Routes>
           <Route
@@ -48,7 +61,7 @@ function App() {
 
           <Route
             exact
-            path="/detailPage"
+            path="/product/:id"
             element={
               <>
                 <Banner mainTitle="Product Detail" />

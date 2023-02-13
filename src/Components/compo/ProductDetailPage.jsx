@@ -5,6 +5,12 @@ import '../../Style/detailPage.css'
 import Devider from './Devider';
 import Reviews from './Reviews';
 import { FaWindowClose } from 'react-icons/fa';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductDetail } from '../../Redux/actions/productAction';
+// For Alert
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetailPage = () => {
   const [count, setCount] = useState(1);
@@ -14,13 +20,28 @@ const ProductDetailPage = () => {
     }
   }, [count])
 
-
   const showsubmitReview = () => {
     document.getElementById('submitReview').classList.toggle('showsubmitReview');
   }
 
+  const { id } = useParams;
+
+  const dispatch = useDispatch();
+
+  dispatch(getProductDetail(id))
+
+
+
+  const { error } = useSelector((state) => state.productDetail);
+  useEffect(() => {
+    toast(error);
+  }, [error]);
+
   return (
     <>
+      <ToastContainer
+        position="bottom-right"
+      />
       <div className="detailPage commonSec">
         <div className="container flex">
           <div className="image">
