@@ -1,28 +1,43 @@
 import React from 'react';
 import "../../Style/reviews.css";
 import { FaWindowClose } from 'react-icons/fa';
+import ReactStars from 'react-stars';
 
-const Reviews = () => {
+const Reviews = ({ revData }) => {
     const showPopup = () => {
         document.getElementById('showReviewPopup').classList.toggle('ReviewPopupShow')
     }
 
+    const { avtar, name, rating, comment } = revData && revData;
+
     return (
         <>
             <div onClick={() => showPopup()} className="review textCenter">
-                <img src="https://cdn.pixabay.com/photo/2013/07/13/10/44/man-157699__340.png" alt="" />
-                <h5>Person Name</h5>
-                <h5>⭐⭐⭐⭐⭐</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique esse corporis ea voluptas accusamus, officia consequatur voluptates facilis repellat dolor perferendis harum hic tempora pariatur tenetur sapiente perspiciatis consectetur laboriosam!</p>
+                <img src={avtar && avtar.url} alt="" />
+                <h5>{name && name}</h5>
+                <h5><ReactStars
+                    count={5}
+                    size={24}
+                    color2={"#0526a2"}
+                    edit={false}
+                    value={rating && rating}
+                /></h5>
+                <p>{comment && comment}</p>
             </div>
 
             <div id='showReviewPopup' className="ReviewPopup flex justifyCenter alignCenter">
                 <div className="review textCenter">
-                <span onClick={() => showPopup()} className="close"><FaWindowClose /></span>
-                    <img src="https://cdn.pixabay.com/photo/2013/07/13/10/44/man-157699__340.png" alt="" />
-                    <h5>Person Name</h5>
-                    <h5>⭐⭐⭐⭐⭐</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique esse corporis ea voluptas accusamus, officia consequatur voluptates facilis repellat dolor perferendis harum hic tempora pariatur tenetur sapiente perspiciatis consectetur laboriosam!</p>
+                    <span onClick={() => showPopup()} className="close"><FaWindowClose /></span>
+                    <img src={avtar && avtar.url} alt="" />
+                    <h5>{name && name}</h5>
+                    <h5><ReactStars
+                        count={5}
+                        size={24}
+                        color2={"#0526a2"}
+                        edit={false}
+                        value={rating && rating}
+                    /></h5>
+                    <p>{comment && comment}</p>
                 </div>
             </div>
         </>

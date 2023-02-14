@@ -4,14 +4,15 @@ import "../../Style/productCard.css";
 import ReactStars from "react-stars";
 
 const ProductCard = ({data}) => {
-  const {category, description, name, numOfReviews, price, ratings, stock, _id} = data;
+  const {category, description, name, images, numOfReviews, price, ratings, stock, _id} = data;
+  console.log(images[0].url)
   return (
     <>
       <Link to={`/product/${_id}`}>
         <div className="productCard">
           <div className="thumb">
             <img
-              src="https://m.media-amazon.com/images/I/81anm+VxFKL._SL1500_.jpg"
+              src={images[0].url}
               alt="////"
             />
           </div>

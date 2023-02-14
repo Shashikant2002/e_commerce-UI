@@ -44,7 +44,7 @@ export const productDetailReducer = (state = { product: {} }, { type, payload })
         case PRODUCT_DETAIL_SUCCESS:
             return {
                 loading: false,
-                product: payload.data.products,
+                product: payload.data.product,
             }
 
         case PRODUCT_DETAIL_FAIL:
