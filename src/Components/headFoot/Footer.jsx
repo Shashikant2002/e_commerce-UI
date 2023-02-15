@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../Style/footer.css';
 import Socal from '../compo/Socal';
+import WLogo from '../../Assets/Logo/w-logo.png'
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
       <footer className="footer commonSec">
         <div className="container flex flexDirCol alignCenter">
           <div className="logo">
-            <img src={process.env.PUBLIC_URL + "Assets/Logo/w-logo.png"} alt="" />
+            <img src={WLogo} alt="" />
           </div>
           <Socal />
         </div>

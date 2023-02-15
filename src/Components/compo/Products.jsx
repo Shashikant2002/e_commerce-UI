@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductCard from './ProductCard';
 import { Link, useLocation } from 'react-router-dom';
 import "../../Style/products.css"
 import Devider from './Devider';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactStars from 'react-stars';
 import Loading from './Loading';
+import { getProduct } from '../../Redux/actions/productAction';
 
 
 const Products = ({ productCount, title }) => {
     const location = useLocation();
     const { loading, products } = useSelector(state => state.products)
-    const data = useSelector(state => state.products)
+    
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getProduct())
+    }, [dispatch])
+
+
     return (
         <>
             {

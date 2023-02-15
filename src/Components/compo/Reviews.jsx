@@ -3,12 +3,14 @@ import "../../Style/reviews.css";
 import { FaWindowClose } from 'react-icons/fa';
 import ReactStars from 'react-stars';
 
-const Reviews = ({ revData }) => {
+const Reviews = ({ revData, index }) => {
+
     const showPopup = () => {
-        document.getElementById('showReviewPopup').classList.toggle('ReviewPopupShow')
+        document.getElementById(`showReviewPopup${index}`).classList.toggle('ReviewPopupShow')
     }
 
     const { avtar, name, rating, comment } = revData && revData;
+    console.log(avtar)
 
     return (
         <>
@@ -25,7 +27,7 @@ const Reviews = ({ revData }) => {
                 <p>{comment && comment}</p>
             </div>
 
-            <div id='showReviewPopup' className="ReviewPopup flex justifyCenter alignCenter">
+            <div id={`showReviewPopup${index}`} className="ReviewPopup flex justifyCenter alignCenter">
                 <div className="review textCenter">
                     <span onClick={() => showPopup()} className="close"><FaWindowClose /></span>
                     <img src={avtar && avtar.url} alt="" />
