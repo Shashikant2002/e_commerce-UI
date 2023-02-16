@@ -36,12 +36,10 @@ const ProductDetailPage = () => {
 
   const { loading, product, error } = useSelector((state) => state.productDetail)
 
-  console.log(product)
   useEffect(() => {
     toast(error);
-  }, [error]);
-
-
+    // dispatch(clearAllError());
+  }, [error, dispatch]);
 
   return (
     <>

@@ -1,6 +1,7 @@
 import { ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, ALL_PRODUCT_FAIL, CLEAR_ERRORS, PRODUCT_DETAIL_REQUEST, PRODUCT_DETAIL_SUCCESS, PRODUCT_DETAIL_FAIL } from "../constance/productConstance";
 
 export const productReducer = (state = { products: [] }, { type, payload }) => {
+    console.log(payload)
     switch (type) {
         case ALL_PRODUCT_REQUEST:
             return {
@@ -12,7 +13,9 @@ export const productReducer = (state = { products: [] }, { type, payload }) => {
             return {
                 loading: false,
                 products: payload.data.products,
-                prodCount: payload.data.productCount
+                prodCount: payload.data.productCount,
+                resultPerPage: payload.data.resultPerPage,
+                filteredProduct: payload.data.filteredProduct
             }
 
         case ALL_PRODUCT_FAIL:

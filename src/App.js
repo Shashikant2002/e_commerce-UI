@@ -58,6 +58,15 @@ function App() {
               </>
             }
           />
+          <Route
+            path="/products/:keyword"
+            element={
+              <>
+                <Banner mainTitle="All Products" />
+                <Products title="All Products" />
+              </>
+            }
+          />
 
           <Route
             exact

@@ -1,24 +1,52 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from './ProductCard';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import "../../Style/products.css"
 import Devider from './Devider';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactStars from 'react-stars';
 import Loading from './Loading';
 import { getProduct } from '../../Redux/actions/productAction';
+// pagenation 
+import Pagination from "react-js-pagination";
 
 
 const Products = ({ productCount, title }) => {
+    // filter start here 
+    const [minPrice, setMenPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(250000000000);
+
+    const [currentPage, setCurrentPage] = useState(1)
     const location = useLocation();
-    const { loading, products } = useSelector(state => state.products)
-    
+    const { loading, products, prodCount, resultPerPage, filteredProduct } = useSelector(state => state.products)
+
+    const categories = ["laptop", "footbear", "phone", "camera"]
+    const [category, setCategory] = useState("");
+
     const dispatch = useDispatch();
+    const { keyword } = useParams();
+
+    const priceFilter = (e) => {
+        e.preventDefault();
+        dispatch(getProduct(keyword, currentPage, minPrice, maxPrice, category));
+    }
 
     useEffect(() => {
-      dispatch(getProduct())
-    }, [dispatch])
+        dispatch(getProduct(keyword, currentPage, minPrice, maxPrice, category));
+    }, [dispatch, keyword, currentPage, category])
 
+
+    const setCurrentPageNo = (e) => {
+        setCurrentPage(e)
+    }
+
+    const count = filteredProduct;
+
+    const clearFilter = () => {
+        setMenPrice(0);
+        setMaxPrice(250000000000);
+        setCategory("");
+    }
 
     return (
         <>
@@ -29,22 +57,24 @@ const Products = ({ productCount, title }) => {
                             <Devider title={title} />
                             <div className="container flex">
                                 {
-                                    location.pathname === "/products" ?
+                                    location.pathname !== "/" ?
                                         <div className="filter">
-                                            <form action='#' className="priceFilter fil">
-                                                <input type="number" placeholder='₹ Min Price' />
-                                                <input type="number" placeholder='₹ Max Price' />
+                                            <h4 className='priceFilter fil'>Total Product: {prodCount} {resultPerPage} {count}</h4>
+                                            <form onSubmit={priceFilter} className="priceFilter fil">
+                                                <input value={minPrice} onChange={(e) => { setMenPrice(e.target.value) }} type="number" placeholder='₹ Min Price' />
+                                                <input value={maxPrice} onChange={(e) => { setMaxPrice(e.target.value) }} type="number" placeholder='₹ Max Price' />
                                                 <button className='globalBtnFillBtn'>Search</button>
                                             </form>
                                             <div action='#' className="categoryFilter fil">
                                                 <h4>Category</h4>
                                                 <ul>
-                                                    <li>Category_1</li>
-                                                    <li>Category_2</li>
-                                                    <li>Category_3</li>
-                                                    <li>Category_4</li>
-                                                    <li>Category_5</li>
-                                                    <li>Category_6</li>
+                                                    {
+                                                        categories && categories.map((ele, i) => {
+                                                            return (
+                                                                <li onClick={() => { setCategory(ele); console.log(ele) }} key={ele}>{ele}</li>
+                                                            );
+                                                        })
+                                                    }
                                                 </ul>
                                             </div>
                                             <div action='#' className="categoryFilter fil">
@@ -60,7 +90,7 @@ const Products = ({ productCount, title }) => {
                                                 </ul>
                                             </div>
                                             <div action='#' className="categoryFilter fil">
-                                                <button className='globalBtnFillBtn'>Clear Filter</button>
+                                                <button onClick={() => clearFilter()} className='globalBtnFillBtn'>Clear Filter</button>
                                             </div>
                                         </div>
                                         : ""
@@ -75,7 +105,27 @@ const Products = ({ productCount, title }) => {
                                     }
                                 </div>
                             </div>
-                            {location.pathname !== "/products" ? <Link style={{ marginTop: "50px", padding: "15px 40px" }} to='/products' className='globalBtnFillBtn'>View All</Link> : ""}
+                            {location.pathname === "/" || count <= resultPerPage ? "" :
+                                <div className="container flex justifyCenter alignCenter">
+                                    <div className="pagenation flex justifyCenter alignCenter">
+                                        <Pagination
+                                            activePage={currentPage}
+                                            onChange={setCurrentPageNo}
+                                            itemsCountPerPage={resultPerPage}
+                                            totalItemsCount={count && count}
+                                            nextPageText="⇉"
+                                            prevPageText="⇇"
+                                            firstPageText={"1st"}
+                                            lastPageText={"Last"}
+                                            itemClass={"pagenationitem"}
+                                            linkClass={"pagenationLink"}
+                                            activeClass={"activeClass"}
+                                            activeLinkClass={"pageActiveLink"}
+                                        />
+                                    </div>
+                                </div>
+                            }
+                            {location.pathname === "/" ? <Link style={{ marginTop: "50px", padding: "15px 40px" }} to='/products' className='globalBtnFillBtn'>View All</Link> : ""}
                         </section>
                     </>
             }

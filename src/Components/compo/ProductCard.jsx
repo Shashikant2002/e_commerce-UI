@@ -5,7 +5,6 @@ import ReactStars from "react-stars";
 
 const ProductCard = ({data}) => {
   const {category, description, name, images, numOfReviews, price, ratings, stock, _id} = data;
-  console.log(images[0].url)
   return (
     <>
       <Link to={`/product/${_id}`}>

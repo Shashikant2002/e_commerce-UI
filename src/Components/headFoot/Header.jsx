@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../Style/header.css';
 import { ImSearch } from 'react-icons/im';
 import { RiShoppingBag3Fill } from 'react-icons/ri';
 import { MdPermContactCalendar } from 'react-icons/md';
 import { FaWindowClose } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CLogo from '../../Assets/Logo/gr-logo.png'
 
 
@@ -32,7 +32,22 @@ function scrollFunction() {
     }
 }
 
+
 const Header = () => {
+    const [keyword, setKeyword] = useState("")
+    const nagvigate = useNavigate();
+
+    const searchSubmitHandeler = (e) => {
+        e.preventDefault();
+        if (keyword.trim()) {
+            nagvigate(`/products/${keyword}`);
+        }else{
+            nagvigate(`/products`);
+        }
+    }
+
+
+
     return (
         <>
             <header id='header' className="header commonSec">
@@ -77,13 +92,14 @@ const Header = () => {
                     </div>
                 </div>
             </header>
+            {/* Search Box  */}
             <div className="search" id='searchBox'>
                 <div className="bg">
                     <div className="container flex justifyCenter alignCenter">
                         <span onClick={() => searchShow()} className='close'><FaWindowClose /></span>
                         <div className="card">
-                            <form action="#">
-                                <input type="text" placeholder='Search Here' />
+                            <form onSubmit={searchSubmitHandeler}>
+                                <input onChange={(e) => setKeyword(e.target.value)} type="text" placeholder='Search Product...' />
                                 <button onClick={() => initialPog()} className='globalBtnFillBtn' type='submit'>Search</button>
                             </form>
                         </div>
