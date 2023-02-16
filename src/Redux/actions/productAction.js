@@ -1,15 +1,15 @@
 import axios from "axios";
 import { ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, ALL_PRODUCT_FAIL, CLEAR_ERRORS, PRODUCT_DETAIL_REQUEST, PRODUCT_DETAIL_SUCCESS, PRODUCT_DETAIL_FAIL } from "../constance/productConstance";
 
-export const getProduct = (keyword = "", currentPage = 1, minPrice, maxPrice, category) => async (dispatch) => {
+export const getProduct = (keyword = "", currentPage = 1, minPrice, maxPrice, category, rating) => async (dispatch) => {
     try {
         dispatch({
             type: ALL_PRODUCT_REQUEST,
         })
 
-        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${minPrice}&price[lte]=${maxPrice}`;
+        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${minPrice}&price[lte]=${maxPrice}&ratings[gte]=${rating}`;
         if (category) {
-            link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${minPrice}&price[lte]=${maxPrice}&category=${category}`;
+            link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${minPrice}&price[lte]=${maxPrice}&ratings[gte]=${rating}&category=${category}`;
         }
         const data = await axios.get(link);
 

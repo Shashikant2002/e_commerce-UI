@@ -15,6 +15,8 @@ const Products = ({ productCount, title }) => {
     // filter start here 
     const [minPrice, setMenPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(250000000000);
+    const [rating, setRating] = useState(0);
+    console.log(rating)
 
     const [currentPage, setCurrentPage] = useState(1)
     const location = useLocation();
@@ -26,26 +28,27 @@ const Products = ({ productCount, title }) => {
     const dispatch = useDispatch();
     const { keyword } = useParams();
 
-    const priceFilter = (e) => {
-        e.preventDefault();
-        dispatch(getProduct(keyword, currentPage, minPrice, maxPrice, category));
-    }
-
-    useEffect(() => {
-        dispatch(getProduct(keyword, currentPage, minPrice, maxPrice, category));
-    }, [dispatch, keyword, currentPage, category])
-
-
     const setCurrentPageNo = (e) => {
         setCurrentPage(e)
     }
 
+    const priceFilter = (e) => {
+        e.preventDefault();
+        setCurrentPageNo(1)
+        dispatch(getProduct(keyword, currentPage, minPrice, maxPrice, category, rating));
+    }
+
+    useEffect(() => {
+        dispatch(getProduct(keyword, currentPage, minPrice, maxPrice, category, rating));
+    }, [dispatch, keyword, currentPage, category, rating])
+
+
+
+
     const count = filteredProduct;
 
     const clearFilter = () => {
-        setMenPrice(0);
-        setMaxPrice(250000000000);
-        setCategory("");
+        window.location.reload();
     }
 
     return (
@@ -59,7 +62,11 @@ const Products = ({ productCount, title }) => {
                                 {
                                     location.pathname !== "/" ?
                                         <div className="filter">
-                                            <h4 className='priceFilter fil'>Total Product: {prodCount} {resultPerPage} {count}</h4>
+                                            <div className="detail fil">
+                                                <h5>Total Product: {prodCount}</h5>
+                                                <h5>Result Per Page: {resultPerPage}</h5>
+                                                <h5>Filtered Product: {count}</h5>
+                                            </div>
                                             <form onSubmit={priceFilter} className="priceFilter fil">
                                                 <input value={minPrice} onChange={(e) => { setMenPrice(e.target.value) }} type="number" placeholder='₹ Min Price' />
                                                 <input value={maxPrice} onChange={(e) => { setMaxPrice(e.target.value) }} type="number" placeholder='₹ Max Price' />
@@ -71,7 +78,7 @@ const Products = ({ productCount, title }) => {
                                                     {
                                                         categories && categories.map((ele, i) => {
                                                             return (
-                                                                <li onClick={() => { setCategory(ele); console.log(ele) }} key={ele}>{ele}</li>
+                                                                <li onClick={() => { setCategory(ele); setCurrentPageNo(1) }} key={ele}>{ele}</li>
                                                             );
                                                         })
                                                     }
@@ -85,7 +92,9 @@ const Products = ({ productCount, title }) => {
                                                         size={24}
                                                         color2={"#0526a2"}
                                                         edit={true}
-                                                        value={2.5}
+                                                        isHalf={false}
+                                                        value={rating}
+                                                        onChange={(e) => setRating(e)}
                                                     />
                                                 </ul>
                                             </div>
