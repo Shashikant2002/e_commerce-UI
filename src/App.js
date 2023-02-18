@@ -13,6 +13,8 @@ import Home from "./pages/Home";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from "react-redux";
+import Login from "./Components/loginReg/Login";
+import Register from "./Components/loginReg/Register";
 
 function App() {
   useEffect(() => {
@@ -86,6 +88,27 @@ function App() {
               <>
                 <Banner mainTitle="Your Cart" />
                 <CartSec />
+              </>
+            }
+          />
+
+          <Route
+            exact
+            path="/login"
+            element={
+              <>
+                <Banner mainTitle="Login Here" />
+                <Login />
+              </>
+            }
+          />
+          <Route
+            exact
+            path="/register"
+            element={
+              <>
+                <Banner mainTitle="Register Here" />
+                <Register />
               </>
             }
           />

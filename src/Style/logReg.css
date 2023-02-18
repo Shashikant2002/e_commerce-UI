@@ -1,0 +1,63 @@
+.login .container{
+}
+
+.login .login_form{
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 5vh 50px;
+    text-align: right;
+}
+.login .login_form button{
+    margin-top: 20px;
+    text-align: right;
+    padding: 15px 50px;
+}
+.login .login_form p a{
+    color: var(--darkCol);
+    font-size: 18px;
+}
+.login .login_form .image img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    border-radius: 50%;
+    background-position-x: top;
+}
+.login .login_form .image{
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 5px;
+    border: 1px solid var(--lightBlue);
+}
+.login .login_form p{
+    margin-top: 20px;
+    text-align: left;
+}
+.login .login_form input{
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--lightBlue);
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+.login .login_form input[name="avtar"]{
+    padding: 0;
+    border: none;
+}
+.login .login_form input::file-selector-button{
+    cursor: pointer;
+    width: 100%;
+    padding: 0;
+    background: var(--gradient_2);
+    border: none;
+    padding: 10px ;
+    color: var(--white);
+}

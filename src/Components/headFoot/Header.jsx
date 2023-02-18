@@ -85,7 +85,7 @@ const Header = () => {
                                     <h4 onClick={() => searchShow()}><ImSearch /></h4>
 
                                     <Link to="/cart"><h4 onClick={() => initialPog()}><RiShoppingBag3Fill /></h4></Link>
-                                    <h4 onClick={() => initialPog()}><MdPermContactCalendar /></h4>
+                                    <Link to={"/login"}><h4 onClick={() => initialPog()}><MdPermContactCalendar /></h4></Link>
                                 </div>
                             </div>
                         </div>

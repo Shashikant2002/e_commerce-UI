@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../Redux/actions/productAction';
 import Loading from './Loading';
 import ReactStars from 'react-stars';
+import MataData from '../MataData';
 
 const ProductDetailPage = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const ProductDetailPage = () => {
 
   return (
     <>
+    <MataData title={"Product Detail"} />
       {
         error ?
           <div className="commonSec">
