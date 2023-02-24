@@ -10,11 +10,14 @@ import WebFont from "webfontloader";
 import { useEffect } from "react";
 import Home from "./pages/Home";
 // For Alert
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import Login from "./Components/loginReg/Login";
 import Register from "./Components/loginReg/Register";
+import store from "./Redux/store.js";
+import { loadUser } from "./Redux/actions/userAction";
+import User from "./Components/compo/User";
 
 function App() {
   useEffect(() => {
@@ -23,21 +26,19 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-  }, []);
 
+    store.dispatch(loadUser());
+  }, []);
 
   const { error } = useSelector((state) => state.products);
   useEffect(() => {
     toast(error);
   }, [error]);
 
-
   return (
     <>
       <BrowserRouter>
-        <ToastContainer
-          position="bottom-right"
-        />
+        <ToastContainer position="bottom-right" />
         <Header />
         <Routes>
           <Route
@@ -109,6 +110,17 @@ function App() {
               <>
                 <Banner mainTitle="Register Here" />
                 <Register />
+              </>
+            }
+          />
+
+          <Route
+            exact
+            path="/profile" 
+            element={
+              <>
+                <Banner mainTitle="Your Profile" />
+                <User />
               </>
             }
           />
