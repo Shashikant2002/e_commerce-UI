@@ -95,6 +95,17 @@ img {
   padding: 15px 20px;
   font-size: 16px;
   cursor: pointer;
+  transition: .5s;
+}
+.globalBtnFillBtn:hover {
+  border: none;
+  outline: none;
+  background: linear-gradient(to left, rgb(14, 0, 142), #3762ff);
+  border: 1px solid var(--white);
+  color: var(--white);
+  padding: 15px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .comCardGap {

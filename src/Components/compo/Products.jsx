@@ -19,7 +19,6 @@ const Products = ({ productCount, title }) => {
     const [minPrice, setMenPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(250000000000);
     const [rating, setRating] = useState(0);
-    console.log(rating)
 
     const [currentPage, setCurrentPage] = useState(1)
     const location = useLocation();
@@ -43,7 +42,7 @@ const Products = ({ productCount, title }) => {
 
     useEffect(() => {
         dispatch(getProduct(keyword, currentPage, minPrice, maxPrice, category, rating));
-    }, [dispatch, keyword, currentPage, category, rating])
+    }, [dispatch, keyword, currentPage, category, rating, minPrice, maxPrice])
 
 
 
@@ -56,7 +55,6 @@ const Products = ({ productCount, title }) => {
 
     useEffect(() => {
         toast(error);
-        // dispatch(clearAllError());
       }, [error, dispatch]);
 
     return (

@@ -1,0 +1,130 @@
+.profile .content .image {
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid var(--lightBlue);
+  margin-bottom: 20px;
+  border-radius: 1%;
+  overflow: hidden;
+  padding: 5px;
+}
+.profile .content .image img {
+  width: 100%;
+  border-radius: 1%;
+}
+.profile .content .detail {
+  margin: 20px 0;
+}
+.profile .content .detail > * {
+  margin-top: 10px;
+}
+.profile .buttons button {
+  border: none;
+  margin: 1px 0px;
+}
+.profile .buttons button a {
+  color: var(--white);
+}
+
+.editForm {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #00000090;
+  top: 0;
+  left: 0;
+  z-index: 9999999999999999;
+  display: none;
+}
+.editForm .container {
+  height: 100%;
+}
+.editForm form .image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.editForm form .image {
+  margin-top: 10px;
+  width: 150px;
+  height: 100px;
+  border: 1px solid var(--lightBlue);
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 5px;
+}
+.editForm form .close {
+    cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 1%;
+  color: var(--lightBlue);
+}
+.editForm form {
+  position: relative;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  border: 1px solid var(--lightBlue);
+  padding: 50px 20px;
+  background: var(--white);
+}
+.editForm form .globalBtnFillBtn {
+  float: right;
+}
+.editForm form input {
+  width: 100%;
+}
+
+.editForm form input::file-selector-button {
+  cursor: pointer;
+  width: 100%;
+  padding: 0;
+  background: var(--gradient_2);
+  border: none;
+  padding: 10px;
+  color: var(--white);
+}
+
+.editForm form input {
+  width: 100%;
+  outline: none;
+  border: 1px solid var(--lightBlue);
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+.editForm form input[name="avtar"] {
+  padding: 0;
+  border: none;
+}
+
+.showUpdateForm {
+  display: block;
+}
+.showUpdateForm .form {
+  animation: animate 0.3s linear;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.showupdatePassword form{
+  animation: animate 0.3s linear;
+}
+
+.showupdatePassword{
+  display: block;
+}
+.editForm form button{
+  margin-top: 10px;
+  padding: 5px 10px;
+}
+.profile form .globalBtnFillBtn{
+  padding: 5px 10px;
+}

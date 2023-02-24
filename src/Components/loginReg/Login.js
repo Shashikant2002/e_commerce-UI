@@ -1,34 +1,78 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import "../../Style/logReg.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, login } from "../../Redux/actions/userAction";
+
+// For Alert
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import Loading from "../compo/Loading";
 
 const Login = () => {
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  let navigate = useNavigate();
 
-    const loginSubmit = (e) => {
-        e.preventDefault();
-        // const loginFormData = new FormData();
-        // loginForm.set("email", loginEmail)
-        // loginForm.set("password", loginPassword)
-        console.log("login form submited")
+  const dispatch = useDispatch();
+  const { error, loading, isAuthenticated } = useSelector((state) => state.user);
+
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(loginEmail, loginPassword));
+  };
+
+  useEffect(() => {
+    if (error) {
+      toast(error);
+      clearErrors();
     }
+
+    if(isAuthenticated){
+        navigate('/profile')
+    }
+
+  }, [error, dispatch, isAuthenticated, navigate]);
 
   return (
     <>
-        <div className="login commonSec">
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <div className="login commonSec">
             <div className="container">
-                <form onSubmit={loginSubmit} className="login_form">
-                    <input value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} placeholder='Enter Your Email' type="email" />
-                    <input value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} placeholder='Enter Your Password' type="password" />
-                    <button className='globalBtnFillBtn' type='submit'>Login</button>
-                    <p><Link to={"/register"}>Register Now</Link></p>
-                    <p><Link to={"/register"}>Forget Password</Link></p>
-                </form>
+              <form onSubmit={loginSubmit} className="login_form">
+                <input
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                  placeholder="Enter Your Email"
+                  type="email"
+                />
+                <input
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
+                  placeholder="Enter Your Password"
+                  type="password"
+                />
+                <button className="globalBtnFillBtn" type="submit">
+                  Login
+                </button>
+                <p>
+                  <Link to={"/register"}>Register Now</Link>
+                </p>
+                <p>
+                  <Link to={"/register"}>Forget Password</Link>
+                </p>
+              </form>
             </div>
-        </div>
-    </>
-  )
-}
+          </div>
+        </>
+      )}
 
-export default Login
+      <ToastContainer position="bottom-right" />
+    </>
+  );
+};
+
+export default Login;

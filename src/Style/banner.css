@@ -1,7 +1,7 @@
 .banner{
     clip-path: polygon(0 0%, 100% 0, 100% 80%, 0% 100%);
     background: var(--gradient);
-    padding: 200px 0 150px 0;
+    padding: 100px 0 60px 0;
 }
 
 .banner h3, .banner h1{

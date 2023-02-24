@@ -1,7 +1,6 @@
 import { ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, ALL_PRODUCT_FAIL, CLEAR_ERRORS, PRODUCT_DETAIL_REQUEST, PRODUCT_DETAIL_SUCCESS, PRODUCT_DETAIL_FAIL } from "../constance/productConstance";
 
 export const productReducer = (state = { products: [] }, { type, payload }) => {
-    console.log(payload)
     switch (type) {
         case ALL_PRODUCT_REQUEST:
             return {
