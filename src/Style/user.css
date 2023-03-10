@@ -32,7 +32,7 @@
   background: #00000090;
   top: 0;
   left: 0;
-  z-index: 9999999999999999;
+  z-index: 999;
   display: none;
 }
 .editForm .container {
@@ -53,7 +53,7 @@
   padding: 5px;
 }
 .editForm form .close {
-    cursor: pointer;
+  cursor: pointer;
   position: absolute;
   top: 0;
   right: 1%;
@@ -85,7 +85,8 @@
   color: var(--white);
 }
 
-.editForm form input {
+.editForm form input,
+.forgetPassword form input {
   width: 100%;
   outline: none;
   border: 1px solid var(--lightBlue);
@@ -114,17 +115,23 @@
     transform: translateY(0px);
   }
 }
-.showupdatePassword form{
+.showupdatePassword form {
   animation: animate 0.3s linear;
 }
 
-.showupdatePassword{
+.showupdatePassword {
   display: block;
 }
-.editForm form button{
+.editForm form button,
+.forgetPassword form button {
   margin-top: 10px;
+}
+.profile form .globalBtnFillBtn {
   padding: 5px 10px;
 }
-.profile form .globalBtnFillBtn{
-  padding: 5px 10px;
+
+@media (max-height: 415px) {
+  .right_buttons .common-btn {
+    width: 134px !important;
+  }
 }

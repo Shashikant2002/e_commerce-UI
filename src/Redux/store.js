@@ -5,16 +5,31 @@ import {
   productDetailReducer,
   productReducer,
 } from "./reducers/productReducer";
-import { profileReducer, userReducer } from "./reducers/userReducer";
+import {
+  forgetPasswordReducer,
+  profileReducer,
+  resetPasswordReducer,
+  userReducer,
+} from "./reducers/userReducer";
+import { cartReducer } from "./reducers/cartReducer";
 
 const reducer = combineReducers({
   products: productReducer,
   productDetail: productDetailReducer,
   user: userReducer,
   profile: profileReducer,
+  forgetPasswordReducer: forgetPasswordReducer,
+  resetPasswordReducer: resetPasswordReducer,
+  cart: cartReducer,
 });
 
-let initState = {};
+let initState = {
+  cart: {
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+  },
+};
 
 const middleWere = [thunk];
 

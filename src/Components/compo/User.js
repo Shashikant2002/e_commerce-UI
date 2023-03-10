@@ -9,7 +9,12 @@ import { FaWindowClose } from "react-icons/fa";
 // For Alert
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import { loadUser, logout, updateProfileDetail } from "../../Redux/actions/userAction";
+import {
+  loadUser,
+  logout,
+  updatePassword,
+  updateProfileDetail,
+} from "../../Redux/actions/userAction";
 import { UPDATE_RESET } from "../../Redux/constance/userConstance";
 
 const showUpdateForm = () => {
@@ -27,7 +32,7 @@ const User = () => {
   const { loading, isAuthenticated, user, error } = useSelector(
     (state) => state.user
   );
-  const {isUpdated} = useSelector((state) => state.profile)
+  const profile = useSelector((state) => state.profile);
 
   const [avtarPreview, setAvtarPreview] = useState(
     user.user && user.user.avtar.url
@@ -36,22 +41,42 @@ const User = () => {
   const [name, setName] = useState(user.user && user.user.name);
   const [email, setEmail] = useState(user.user && user.user.email);
 
+  const [oldPassword, setOlePassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confPassword, setCPassowrd] = useState("");
+
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/login");
     }
-    if (isUpdated) {
+    if (profile.isUpdated) {
       toast("Profile Updated Successful");
-      dispatch(loadUser())
+      dispatch(loadUser());
       navigate("/");
       dispatch({
         type: UPDATE_RESET,
-      })
+      });
     }
     if (error) {
-      return toast(error);
+      toast(error);
+      return () => {
+        console.log(error);
+      }
     }
-  }, [isAuthenticated, error, navigate, isUpdated, dispatch]);
+    if (profile.error) {
+      toast(profile.error);
+      return () => {
+        console.log(error);
+      }
+    }
+  }, [
+    isAuthenticated,
+    error,
+    navigate,
+    profile.isUpdated,
+    dispatch,
+    profile.error,
+  ]);
 
   const logoutAccount = () => {
     dispatch(logout());
@@ -61,7 +86,13 @@ const User = () => {
 
   const updateProfile = (e) => {
     e.preventDefault();
-    dispatch(updateProfileDetail({name, email, avtar}))
+    dispatch(updateProfileDetail({ name, email, avtar }));
+  };
+
+  const formUpdatePassword = (e) => {
+    e.preventDefault();
+    console.log(oldPassword, newPassword, confPassword);
+    dispatch(updatePassword({ oldPassword, newPassword, confPassword }));
   };
 
   const updateOnChange = (e) => {
@@ -77,7 +108,7 @@ const User = () => {
 
   return (
     <>
-      {loading ? (
+      {loading || profile.loading ? (
         <Loading />
       ) : (
         <div className="profile">
@@ -184,25 +215,25 @@ const User = () => {
 
       <div id="updatePassword" className="editForm">
         <div className="container flex justifyCenter alignCenter">
-          <form className="form" onSubmit={updateProfile}>
+          <form className="form" onSubmit={formUpdatePassword}>
             <span onClick={showupdatePassword} className="close">
               <FaWindowClose />
             </span>
             <input
               name="oldPassword"
-              onChange={updateOnChange}
+              onChange={(e) => setOlePassword(e.target.value)}
               type="text"
               placeholder={`Old Password`}
             />
             <input
               name="newPassword"
-              onChange={updateOnChange}
+              onChange={(e) => setNewPassword(e.target.value)}
               type="password"
               placeholder={`Enter New Password`}
             />
             <input
               name="cPassword"
-              onChange={updateOnChange}
+              onChange={(e) => setCPassowrd(e.target.value)}
               placeholder="Enter Your Confirm Password"
               type="text"
             />

@@ -18,6 +18,8 @@ import Register from "./Components/loginReg/Register";
 import store from "./Redux/store.js";
 import { loadUser } from "./Redux/actions/userAction";
 import User from "./Components/compo/User";
+import ForgetPassword from "./Components/compo/ForgetPassword";
+import ResetPassword from "./Components/compo/ResetPassword";
 
 function App() {
   useEffect(() => {
@@ -121,6 +123,28 @@ function App() {
               <>
                 <Banner mainTitle="Your Profile" />
                 <User />
+              </>
+            }
+          />
+
+          <Route
+            exact
+            path="/password/resetpassword/:token" 
+            element={
+              <>
+                <Banner mainTitle="Your Profile" />
+                <ResetPassword />
+              </>
+            }
+          />
+
+          <Route
+            exact
+            path="/forgetPassword" 
+            element={
+              <>
+                <Banner mainTitle="Forget Password" />
+                <ForgetPassword />
               </>
             }
           />

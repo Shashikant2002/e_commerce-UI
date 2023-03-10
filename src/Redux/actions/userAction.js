@@ -1,5 +1,8 @@
 import {
   CLEAR_ERRORS,
+  FORGET_PASSWORD_FAIL,
+  FORGET_PASSWORD_REQUEST,
+  FORGET_PASSWORD_SUCCESS,
   LOAD_FAIL,
   LOAD_REQUEST,
   LOAD_SUCCESS,
@@ -11,6 +14,13 @@ import {
   REGISTER_FAIL,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
+  RESET_PASSWORD_FAIL,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_SUCCESS,
+  UPDATE_FAIL,
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_SUCCESS,
   UPDATE_REQUEST,
   UPDATE_SUCCESS,
 } from "../constance/userConstance";
@@ -105,23 +115,116 @@ export const register = (userData) => async (dispatch) => {
   }
 };
 // update profile
-export const updateProfileDetail = ({name, email, avtar}) => async (dispatch) => {
+export const updateProfileDetail =
+  ({ name, email, avtar }) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: UPDATE_REQUEST });
+
+      const config = {
+        header: { "Content-Type": "multipart/data" },
+      };
+
+      const { data } = await axios.put(
+        `/api/v1/me/update`,
+        { name, email, avtar },
+        config
+      );
+      dispatch({
+        type: UPDATE_SUCCESS,
+        payload: data.success,
+      });
+    } catch (err) {
+      dispatch({
+        type: UPDATE_FAIL,
+        payload: err.response.data.message,
+      });
+    }
+  };
+
+// update profile
+export const updatePassword =
+  ({ oldPassword, newPassword, confPassword }) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: UPDATE_PASSWORD_REQUEST });
+
+      const config = {
+        header: { "Content-Type": "application/json" },
+      };
+      const { data } = await axios.post(
+        `/api/v1/password/updatePassowrd`,
+        { oldPassword, newPassword, confPassword },
+        config
+      );
+      dispatch({
+        type: UPDATE_PASSWORD_SUCCESS,
+        payload: data.success,
+      });
+    } catch (err) {
+      dispatch({
+        type: UPDATE_PASSWORD_FAIL,
+        payload: err.response.data.message,
+      });
+    }
+  };
+
+//For get Password
+export const forgetPasswordMain = (email) => async (dispatch) => {
   try {
-    console.log(name, email, avtar);
-    dispatch({ type: UPDATE_REQUEST });
+    dispatch({
+      type: FORGET_PASSWORD_REQUEST,
+    });
+
     const config = {
-      header: { "Content-Type": "multipart/data" },
+      header: { "Content-Type": "application/json" },
     };
-    const { data } = await axios.put(`/api/v1/me/update`, {name, email, avtar }, config);
+
+    const { data } = await axios.post(
+      "/api/v1/password/forgetpassword",
+      { email },
+      config
+    );
 
     dispatch({
-      type: UPDATE_SUCCESS,
-      payload: data,
+      type: FORGET_PASSWORD_SUCCESS,
+      payload: data.message,
     });
   } catch (err) {
     dispatch({
-      type: UPDATE_SUCCESS,
+      type: FORGET_PASSWORD_FAIL,
       payload: err.response.data.message,
     });
   }
 };
+
+//For get Password
+export const resetPasswordMain =
+  ({ password, confirmPassword, token }) =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: RESET_PASSWORD_REQUEST,
+      });
+
+      const config = {
+        header: { "Content-Type": "application/json" },
+      };
+
+      const { data } = await axios.post(
+        `/api/v1/password/resetpassword/${token}`,
+        { password, confirmPassword },
+        config
+      );
+
+      dispatch({
+        type: RESET_PASSWORD_SUCCESS,
+        payload: data.message,
+      });
+    } catch (err) {
+      dispatch({
+        type: RESET_PASSWORD_FAIL,
+        payload: err.response.data.message,
+      });
+    }
+  };
