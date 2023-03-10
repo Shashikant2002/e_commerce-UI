@@ -48,6 +48,11 @@ const ProductDetailPage = () => {
     // dispatch(clearAllError());
   }, [error, dispatch]);
 
+  const addCart = () => {
+    dispatch(addItemsToCart(product._id, count));
+    toast("Item Added to Cart");
+  };
+
   return (
     <>
       <MataData title={"Product Detail"} />
@@ -93,14 +98,21 @@ const ProductDetailPage = () => {
                 >
                   -
                 </h5>
-                <input readOnly className="count textCenter" type="text" value={count} />
+                <input
+                  readOnly
+                  className="count textCenter"
+                  type="text"
+                  value={count}
+                />
                 <h5
                   className="globalBtnFillBtn"
                   onClick={() => setCount(count + 1)}
                 >
                   +
                 </h5>
-                <button onClick={addItemsToCart} className="globalBtnFillBtn">Add to Cart</button>
+                <button onClick={() => addCart()} className="globalBtnFillBtn">
+                  Add to Cart
+                </button>
               </div>
               <h5>
                 <span>Status: </span>{" "}

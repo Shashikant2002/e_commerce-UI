@@ -10,7 +10,6 @@ const Reviews = ({ revData, index }) => {
     }
 
     const { avtar, name, rating, comment } = revData && revData;
-    console.log(avtar)
 
     return (
         <>

@@ -1,9 +1,10 @@
-import { ADD_TO_CART } from "../constance/cartConstance";
+import { ADD_TO_CART, REMOVE_CART_ITEM } from "../constance/cartConstance";
 
 export const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       const item = action.payload;
+      console.log(item);
       const itemIsExist = state.cartItems.find(
         (i) => i.product === item.product
       );
@@ -21,6 +22,13 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
           cartItems: [...state.cartItems, item],
         };
       }
+
+    case REMOVE_CART_ITEM:
+        return {
+            ...state,
+            cartItems: state.cartItems.filter((i) => i.product !== action.payload)
+        }
+
     default:
       return state;
   }
